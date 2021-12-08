@@ -187,7 +187,7 @@ class ZooVrtTest {
         assertEquals("tom-1003", tom.getId());
     }
 
-   /* @Test
+    @Test
     void koToTamoGovoriKlasaTest() {
         ZooVrt pionirska = new ZooVrt();
         Tigar tigger = null;
@@ -224,5 +224,5 @@ class ZooVrtTest {
         assertTrue(rezultat.contains(pikachu));
     }
 
-    */
+
 }

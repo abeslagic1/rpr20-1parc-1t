@@ -62,5 +62,7 @@ public abstract class Zivotinja {
     }
 
     public abstract String glas();
-    public abstract String vrsta();
+    public String vrsta(){
+        return "";
+    };
 }

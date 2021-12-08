@@ -17,7 +17,7 @@ public class ZooVrt {
     public String dajTabelu(){
         String rezultat = "";
         for(Zivotinja z : lista){
-            rezultat += z.getIme() + " (" + z.vrsta() + "): " + z.getId() + "\n";
+            rezultat += z.getIme() + " (" + z.vrsta() + ") : " + z.getId() + "\n";
         }
         return rezultat;
     }
@@ -37,12 +37,15 @@ public class ZooVrt {
         lista.add(z);
     }
 
-    public void dodaj(Zivotinja zivotinja){
+    public void dodaj(Zivotinja zivotinja) throws DvostrukiIdException {
+        for(Zivotinja z : lista){
+            if(z.getId().equals(zivotinja.getId())) throw new DvostrukiIdException("Životinja sa IDom " + zivotinja.getId() + " već postoji u Zoo vrtu");
+        }
         lista.add(zivotinja);
     }
 
     public void dodaj(Class vrstaZivotinje, String ime) throws NeispravanFormatIdaException {
-        int id = nadjiNajveciId();
+        int id = nadjiNajveciId()+1;
         String sId = Zivotinja.generisiId(ime) + "-" + id;
         dodaj(vrstaZivotinje, ime, sId);
     }
@@ -57,11 +60,11 @@ public class ZooVrt {
         return max;
     }
 
-    public void dodaj(String vrstaZivotinje, String id, String ime, Supplier<String> f) throws NeispravanFormatIdaException {
-        VlastitaZivotinja z = new VlastitaZivotinja(id, ime);
-        z.setGlasFunkcija(f);
-        z.setVrstaZivotinje(vrstaZivotinje);
-        lista.add(z);
+    public void dodaj(String vrstaZivotinje, String id, String ime, Supplier<String> f) throws NeispravanFormatIdaException, DvostrukiIdException {
+        for(Zivotinja z : lista)
+            if (z.getId().equals(id))
+                throw new DvostrukiIdException("Životinja sa IDom "+id+" već postoji u Zoo vrtu");
+        lista.add(new VlastitaZivotinja(id, ime, vrstaZivotinje, f));
     }
 
     public void obrisi(String id){

@@ -7,7 +7,7 @@ public class VlastitaZivotinja extends Zivotinja{
     private String vrstaZivotinje;
     private Supplier<String> glasFunkcija;
 
-    public VlastitaZivotinja(String id, String ime) throws NeispravanFormatIdaException {
+    public VlastitaZivotinja(String s, String id, String ime, Supplier<String> f) throws NeispravanFormatIdaException {
         super(id, ime);
     }
 
