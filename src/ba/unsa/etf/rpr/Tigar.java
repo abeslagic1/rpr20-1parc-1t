@@ -9,4 +9,9 @@ public class Tigar extends Macka{
     public String glas() {
         return "rrrr";
     }
+
+    @Override
+    public String vrsta() {
+        return "Tigar";
+    }
 }

@@ -9,4 +9,9 @@ public class DomaciPas extends Pas{
     public String glas() {
         return "av";
     }
+
+    @Override
+    public String vrsta() {
+        return "DomaciPas";
+    }
 }

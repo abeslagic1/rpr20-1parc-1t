@@ -9,4 +9,9 @@ public class DomacaMacka extends Macka{
     public String glas() {
         return "mjau";
     }
+
+    @Override
+    public String vrsta() {
+        return "DomacaMacka";
+    }
 }

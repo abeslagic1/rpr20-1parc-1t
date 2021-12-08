@@ -9,4 +9,9 @@ public class Vuk extends Pas{
     public String glas() {
         return "auuu";
     }
+
+    @Override
+    public String vrsta() {
+        return "Vuk";
+    }
 }

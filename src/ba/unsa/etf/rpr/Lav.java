@@ -9,4 +9,9 @@ public class Lav extends Macka{
     public String glas() {
         return "roar";
     }
+
+    @Override
+    public String vrsta() {
+        return "Lav";
+    }
 }

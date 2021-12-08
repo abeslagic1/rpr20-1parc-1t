@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr;
 
 public abstract class Zivotinja {
     private String id;
-    private String ime;
+    protected String ime;
 
     public Zivotinja(String id, String ime) throws NeispravanFormatIdaException{
         //moze se koristit i metoda trim koja izbacuje praznine.
@@ -13,7 +13,7 @@ public abstract class Zivotinja {
         this.ime = ime;
     }
 
-    private boolean provjeriId(String id, String ime) throws NeispravanFormatIdaException{
+    public static String generisiId(String ime){
         String novoIme = "";
         for(int i=0; i<ime.length(); i++){
             char c = ime.charAt(i);
@@ -24,7 +24,12 @@ public abstract class Zivotinja {
             if(c == 'đ' || c == 'Đ') novoIme += 'd';
             if(c == 'ž' || c == 'Ž') novoIme += 'z';
         }
+        return novoIme;
+    }
 
+    private boolean provjeriId(String id, String ime) throws NeispravanFormatIdaException{
+
+        String novoIme = Zivotinja.generisiId(ime);
         if(id.length() <= novoIme.length()+1) throw new NeispravanFormatIdaException("Id je prekratak" + novoIme);
         if(!id.substring(0, novoIme.length()).equals(novoIme)) throw new NeispravanFormatIdaException("Id se ne poklapa");
         if(id.charAt(novoIme.length()) != '-') throw new NeispravanFormatIdaException("znak nije crtica");
@@ -57,4 +62,5 @@ public abstract class Zivotinja {
     }
 
     public abstract String glas();
+    public abstract String vrsta();
 }
